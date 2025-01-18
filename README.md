@@ -6,6 +6,7 @@ DEMO VIDEO IS AVAILABLE HERE:  [User Management Dashboard - 18 January 2025 - Wa
       <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/db3c2d79e6ef432bb9dc4d87d403c73f-ff728357ed106d2f-full-play.gif">
     </a>
   </div>
+
 ## TASK
 []: # (DOCUMENTATION COMMENT)
 Challenge
