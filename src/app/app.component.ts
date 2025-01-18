@@ -28,9 +28,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.isHandset$.subscribe((isHandset) => {
-    //   this.sidebarSubscription = isHandset;
-    // });
   }
 
   toggleSidenav(): void {
