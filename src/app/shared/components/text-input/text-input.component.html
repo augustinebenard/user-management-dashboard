@@ -1,0 +1,20 @@
+<div class="my-2">
+  <div class="floating-input relative">
+    <div class="flex items-center">
+      <input [type]="type" [formControl]="control" [placeholder]="placeholder"
+        [ngClass]="(control.touched) ? (control.invalid ? 'is-invalid' : 'is-valid') : null"
+        class="border border-gray-200 focus:outline-none bg-[#EDEFF2] rounded-md focus:border-primary focus:shadow-sm w-full mt-2 pb-1 p-3 h-14 text-sm" />
+    </div>
+    <label
+      class="absolute top-0 left-0 px-4 py-4 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out truncate">{{label}}</label>
+  </div>
+  <ng-container *ngIf="control.touched && control.errors">
+    <mat-error *ngIf="control.errors?.['required']" class="error-class">
+      Please enter your {{label}}
+    </mat-error>
+  </ng-container>
+  <mat-error *ngIf="control.errors?.['email']" class="error-class">
+    Invalid email address
+  </mat-error>
+
+</div>

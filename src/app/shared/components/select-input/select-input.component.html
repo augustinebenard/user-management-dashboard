@@ -1,0 +1,27 @@
+<div class="my-2">
+  <div class="floating-input relative">
+    <mat-select
+      [formControl]="control"
+      placeholder="{{ placeholder }}"
+      [ngClass]="{
+        'is-invalid': control.touched && control.invalid,
+        'is-valid': control.touched && !control.invalid,
+        'bg-gray-300 text-gray-500 cursor-not-allowed': disableInput
+      }"
+      class="border border-gray-200 focus:outline-none bg-[#EDEFF2] rounded-md focus:border-primary focus:shadow-sm w-full mt-2 pb-1 p-3 h-14 text-sm"
+    >
+      <mat-option *ngFor="let option of options" [value]="option.value">
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+    <label
+      class="absolute top-0 left-0 px-4 py-4 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out truncate"
+      >{{ label }}</label
+    >
+  </div>
+  <ng-container *ngIf="control?.touched && control?.errors">
+    <mat-error *ngIf="control.errors?.['required']" class="error-class">
+      Please select your {{ label }}
+    </mat-error>
+  </ng-container>
+</div>

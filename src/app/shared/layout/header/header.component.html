@@ -1,0 +1,42 @@
+<div class="shadow flex-1">
+  <mat-toolbar class="!h-20" style="padding-right: 0; padding-left: 0">
+    <div class="flex items-center justify-between mx-4 w-full">
+      <div class="flex items-center justify-between">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="toggleRightSidenav()"
+          *ngIf="isHandset$ | async"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 5.25h16.5m-16.5 6.75h16.5m-16.5 6.75h16.5"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex space-x-5 items-center justify-between">
+        <div class="text-right w-24 md:w-fit">
+          <p class="text-sm truncate">{{'augustinebenard14@gmail.com'}}</p>
+          <p class="text-xs text-muted truncate font-semibold">Frontend Engineer</p>
+        </div>
+        <div
+          class="w-50 cursor-pointer bg-#FFEBF7 text-sm border-2 px-2.5 py-2 border-primary rounded-full flex items-center justify-center text-primary"
+        >
+          AB
+        </div>
+      </div>
+    </div>
+  </mat-toolbar>
+</div>

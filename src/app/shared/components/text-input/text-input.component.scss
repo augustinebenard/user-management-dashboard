@@ -1,0 +1,11 @@
+.error-class {
+  color: red;
+  font-size: 13px;
+}
+
+input:disabled {
+  background-color: #d6d9dd;
+  border-color: #dcdcdc;
+  color: #000000;
+  cursor: not-allowed;
+}

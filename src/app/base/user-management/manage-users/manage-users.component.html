@@ -1,0 +1,32 @@
+<div class="my-4">
+  <div class="text-lg font-bold">Company Details</div>
+  <div class="text-sm font-normal text-gray-500">Please provide the details of your company</div>
+</div>
+
+<form [formGroup]="form">
+  <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 my-2">
+    <app-text-input [formControl]="covertToFormControl(form.controls['name'])" type="text" label="Name"
+      placeholder="Enter Name" class="w-full" />
+    <app-text-input [formControl]="covertToFormControl(form.controls['email'])" type="email" label="Email Address"
+      placeholder="Enter Email Address" class="w-full " />
+
+      <app-select-input
+      placeholder="Select option"
+      label="User Role"
+      [formControl]="covertToFormControl(form.controls['role'])"
+      [options]="roles"
+      class="w-full"
+    ></app-select-input>
+
+  </div>
+
+
+
+  <div class="mt-5 flex space-x-6">
+    <button (click)="createUser()" class="btn  rounded-xl bg-primary  text-white font-bold  px-20"
+      [disabled]="!form.valid || btnLoading">
+      <span *ngIf="!btnLoading">Next</span>
+      <span *ngIf="btnLoading" class="loading loading-bars"></span>
+    </button>
+  </div>
+</form>

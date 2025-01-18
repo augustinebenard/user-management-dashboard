@@ -1,0 +1,27 @@
+<div class="flex shadow flex-col justify-between h-full bg-white border-r-[1px] border-[#E4E4E4]">
+  <div>
+    <mat-toolbar>
+      <img src="https://primedehealth.com/wp-content/uploads/2022/11/cropped-cropped-Asset-24-8.png" class="py-4" alt="sidebar icon " />
+    </mat-toolbar>
+
+
+    <ul class="mt-12 ">
+      <ng-container *ngFor="let item of sidebarItems; let i = index">
+        <li [ngClass]="{
+          'text-white bg-[#b12025]': isRouteActive('/' + item.to),
+          'text-[#b12025] ': !isRouteActive(
+            '/' + item.to
+          )
+        }" class="w-full hover:text-[15px] hover:underline text-sm font-medium cursor-pointer"
+          (click)="routeTo(item.to)">
+          <a class="w-full flex gap-4 items-center p-4">
+            <p>{{ item.label }}</p>
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+
+
+
+</div>

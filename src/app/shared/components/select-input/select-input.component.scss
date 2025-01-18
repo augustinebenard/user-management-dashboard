@@ -1,0 +1,7 @@
+::ng-deep .mat-mdc-select {
+  padding-top: 20px !important;
+}
+
+::ng-deep .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text {
+  color: #b12025 !important;
+}
