@@ -1,6 +1,8 @@
 <div class="my-4">
-  <div class="text-lg font-bold">Company Details</div>
-  <div class="text-sm font-normal text-gray-500">Please provide the details of your company</div>
+  <div class="text-lg font-bold">User Management</div>
+  <div class="text-sm font-normal text-gray-500">
+    This is the user management page. You can create, edit and delete users here.
+  </div>
 </div>
 
 <form [formGroup]="form">
@@ -10,13 +12,8 @@
     <app-text-input [formControl]="covertToFormControl(form.controls['email'])" type="email" label="Email Address"
       placeholder="Enter Email Address" class="w-full " />
 
-      <app-select-input
-      placeholder="Select option"
-      label="User Role"
-      [formControl]="covertToFormControl(form.controls['role'])"
-      [options]="roles"
-      class="w-full"
-    ></app-select-input>
+    <app-select-input placeholder="Select option" label="User Role"
+      [formControl]="covertToFormControl(form.controls['role'])" [options]="roles" class="w-full"></app-select-input>
 
   </div>
 
@@ -25,8 +22,107 @@
   <div class="mt-5 flex space-x-6">
     <button (click)="createUser()" class="btn  rounded-xl bg-primary  text-white font-bold  px-20"
       [disabled]="!form.valid || btnLoading">
-      <span *ngIf="!btnLoading">Next</span>
+      <span *ngIf="!btnLoading">{{editable? 'Save Changes':'Create User'}}</span>
       <span *ngIf="btnLoading" class="loading loading-bars"></span>
     </button>
   </div>
 </form>
+
+
+<div class="overflow-x-auto mt-6 mb-8">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="text-black text-base">S/N</th>
+        <th class="text-black text-base">Name</th>
+        <th class="text-black text-base">Email</th>
+        <th class="text-black text-base">Role</th>
+        <th class="text-black text-base">Actions</th>
+
+      </tr>
+    </thead>
+
+    <tbody *ngIf="isLoading; else tableLoaded">
+      <tr>
+        <td>
+          <div class="skeleton h-8 w-full"></div>
+        </td>
+        <td>
+          <div class="skeleton h-8 w-full"></div>
+        </td>
+        <td>
+          <div class="skeleton h-8 w-full"></div>
+        </td>
+        <td>
+          <div class="skeleton h-8 w-full"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="skeleton h-8 w-full"></div>
+        </td>
+        <td>
+          <div class="skeleton h-8 w-full"></div>
+        </td>
+        <td>
+          <div class="skeleton h-8 w-full"></div>
+        </td>
+        <td>
+          <div class="skeleton h-8 w-full"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="skeleton h-8 w-full"></div>
+        </td>
+        <td>
+          <div class="skeleton h-8 w-full"></div>
+        </td>
+        <td>
+          <div class="skeleton h-8 w-full"></div>
+        </td>
+        <td>
+          <div class="skeleton h-8 w-full"></div>
+        </td>
+      </tr>
+    </tbody>
+
+    <ng-template #tableLoaded>
+      <tbody *ngIf="userList.length > 0; else noData">
+        <tr *ngFor="let user of userList; let i = index">
+          <td class="text-sm text-gray-500">{{ i + 1 }}</td>
+          <td class="text-sm text-gray-500">{{ user.name }}</td>
+          <td class="text-sm text-gray-500">{{ user.email }}</td>
+          <td class="text-sm text-gray-500">{{ user.role }}</td>
+          <td class="text-right flex flex-col sm:flex-row sm:space-x-2 ">
+
+
+            <button (click)="editUser(i)" class="btn btn-sm btn-outline btn-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 3.487a2.25 2.25 0 013.182 3.182L7.53 19.182a2.25 2.25 0 01-1.067.591l-4.125.825a.375.375 0 01-.455-.455l.825-4.125a2.25 2.25 0 01.591-1.067L16.862 3.487zM12.75 6.75L17.25 11.25" />
+              </svg>
+              Edit
+            </button>
+
+            <button (click)="deleteUser(i)" class="btn btn-sm btn-outline btn-error ">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m2.25-7.5H12a2.25 2.25 0 012.25 2.25v.75M9 12h6m-6 0v6m0-6V6.75M9 12l1.5-6m0 0h3l1.5 6M15 12v6m0-6h1.5M9 18h6a2.25 2.25 0 002.25-2.25v-9H6.75v9A2.25 2.25 0 009 18z" />
+              </svg>
+              Delete
+            </button>
+
+          </td>
+        </tr>
+      </tbody>
+      <ng-template #noData>
+        <tbody>
+          <tr>
+            <td class="text-center text-gray-500 text-xl font-medium" colspan="5">
+              No data available
+            </td>
+          </tr>
+        </tbody>
+      </ng-template>
+    </ng-template>
+  </table>
+</div>

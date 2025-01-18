@@ -4,7 +4,7 @@
     [opened]="!sidebarSubscription">
     <app-sidebar></app-sidebar>
   </mat-sidenav>
-  <mat-sidenav-content class="!flex-1 md:!ml-64 overflow-auto">
+  <mat-sidenav-content class="!flex-1 md:!ml-64 overflow-auto bg-white">
     <app-header [sidenav]="sidenav" [isHandset$]="isHandset$"></app-header>
     <div class="p-5 lg:!px-10 ">
       <router-outlet></router-outlet>

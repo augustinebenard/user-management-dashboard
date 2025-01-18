@@ -1,0 +1,15 @@
+.btn-primary {
+  @apply bg-primary text-white;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.btn-error {
+  @apply bg-error text-white;
+
+  &:hover {
+    color: #fff;
+  }
+}
